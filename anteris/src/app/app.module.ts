@@ -33,6 +33,7 @@ import {MatProgressBar, MatProgressBarModule} from '@angular/material';
 import {CountdownTimerModule} from 'angular-countdown-timer';
 import { ClipboardModule } from 'ngx-clipboard';
 import { WelcomeComponent } from './components/welcome/welcome.component';
+import { FinancialRecordComponent } from './components/financial-record/financial-record.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +55,8 @@ import { WelcomeComponent } from './components/welcome/welcome.component';
     ListMembersComponent,
     EditMemberComponent,
     VoteDisplayComponent,
-    WelcomeComponent
+    WelcomeComponent,
+    FinancialRecordComponent
   ],
   imports: [
     BrowserModule,

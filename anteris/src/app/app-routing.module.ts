@@ -14,11 +14,13 @@ import { DonationListComponent } from './components/donation-list/donation-list.
 import { VoteEditComponent } from './components/vote-edit/vote-edit.component';
 import { VoteDetailsComponent } from './components/vote-components/vote-details/vote-details.component';
 import {WelcomeComponent} from './components/welcome/welcome.component';
+import {FinancialRecordComponent} from './components/financial-record/financial-record.component';
 
 
 const routes: Routes = [
   { path: '', component: WelcomeComponent},
   { path: 'pending/:id', component: RegisterComponent},
+  { path: 'financial', component: FinancialRecordComponent},
   { path: 'dashboard', component: HomeComponent, canActivate: [AuthGuard] },
   { path: 'register', component: RegisterComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent },

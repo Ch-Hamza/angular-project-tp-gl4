@@ -26,22 +26,18 @@ export class RegisterComponent implements OnInit {
     private pendingAccount: PendingAccountService,
     private formBuilder: FormBuilder,
     private userService: UserService,
-    private toastr: ToastrService) { }
+    private toastr: ToastrService) {
+  }
 
   ngOnInit() {
     this.initForm('');
-    this.activatedRoute.params.subscribe(
-      (data) => {
-        this.pendingAccount.getById(data.id).subscribe(
-
+    console.log(this.activatedRoute.snapshot.paramMap.get('id'));
+    this.pendingAccount.getById(this.activatedRoute.snapshot.paramMap.get('id')).subscribe(
           (dt) => {
             // @ts-ignore
             this.initForm(dt.email);
-          },
-          (error) => this.route.navigate(['/'])
+          }
         );
-      }
-    );
   }
 
   initForm(email) {

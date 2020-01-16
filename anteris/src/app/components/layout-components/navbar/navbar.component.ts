@@ -15,7 +15,7 @@ export class NavbarComponent implements OnInit {
     private loginService: LoginService) {
     this.loginService.currentUser.subscribe(data => {
       if (data) {
-        this.user = data['user'].username
+        this.user = data['user'].username;
       }
     });
   }
