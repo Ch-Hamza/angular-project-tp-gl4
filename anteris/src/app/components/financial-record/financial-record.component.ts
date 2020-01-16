@@ -5,6 +5,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ToastrService} from 'ngx-toastr';
 import {FileUploadService} from '../../services/fileUpload.service';
 import {UserService} from '../../services/user.service';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-financial-record',
@@ -14,9 +15,13 @@ import {UserService} from '../../services/user.service';
 export class FinancialRecordComponent implements OnInit {
 
   fileToUpload: File = null;
+  data: string;
   modelRecord: FormGroup;
   records: Record[];
   editMode = false;
+  imageToShow: any;
+  isImageLoading: boolean;
+
   selectedRecord: Record;
   dropdownListType = [
     'DEPOSIT',
@@ -26,14 +31,26 @@ export class FinancialRecordComponent implements OnInit {
   constructor(private financialService: FinancialRecordsService,
               private formBuilder: FormBuilder,
               private toastr: ToastrService,
+              private domSanitizer: DomSanitizer,
               private fileUploadService: FileUploadService) {
   }
 
   ngOnInit() {
+    this.records = [];
     this.initForm();
     this.financialService.findAll().subscribe(
       (data) => this.records = data as Record[]
     );
+  }
+  createImageFromBlob(image: Blob) {
+    const reader = new FileReader();
+    reader.addEventListener( "load", () => {
+      this.imageToShow = reader.result;
+    }, false);
+
+    if (image) {
+      reader.readAsDataURL(image);
+    }
   }
   handleFileInput(files: FileList) {
     this.fileToUpload = files.item(0);
@@ -52,6 +69,10 @@ export class FinancialRecordComponent implements OnInit {
     this.financialService.removeById(id).subscribe(
       () => this.records.splice(i, 1)
     );
+  }
+
+  showRecord(id, i) {
+      this.fileUploadService.getImage(this.records[i].image).subscribe(imgData => this.data = imgData.replace('data:application/json', 'data:image/png') );
   }
 
   onSubmit() {
