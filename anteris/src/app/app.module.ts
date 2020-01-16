@@ -32,6 +32,12 @@ import {VoteDisplayComponent} from './components/vote-display/vote-display.compo
 import {MatProgressBar, MatProgressBarModule} from '@angular/material';
 import {CountdownTimerModule} from 'angular-countdown-timer';
 import { ClipboardModule } from 'ngx-clipboard';
+import { AddMemberComponent } from './components/add-member/add-member.component';
+import { ListMeetingsComponent } from './components/meeting/list-meetings/list-meetings.component';
+import { AddMeetingComponent } from './components/meeting/add-meeting/add-meeting.component';
+import { EditMeetingComponent } from './components/meeting/edit-meeting/edit-meeting.component';
+import { DisplayMeetingComponent } from './components/meeting/display-meeting/display-meeting.component';
+import { MeetingDetailsComponent } from './components/meeting/meeting-details/meeting-details.component';
 import { WelcomeComponent } from './components/welcome/welcome.component';
 import { FinancialRecordComponent } from './components/financial-record/financial-record.component';
 
@@ -55,6 +61,13 @@ import { FinancialRecordComponent } from './components/financial-record/financia
     ListMembersComponent,
     EditMemberComponent,
     VoteDisplayComponent,
+    AddMemberComponent,
+    ListMeetingsComponent,
+    AddMeetingComponent,
+    EditMeetingComponent,
+    DisplayMeetingComponent,
+    MeetingDetailsComponent,
+    WelcomeComponent,
     WelcomeComponent,
     FinancialRecordComponent
   ],
